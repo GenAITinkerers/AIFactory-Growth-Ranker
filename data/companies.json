@@ -1,0 +1,6 @@
+[
+    {"company_name": "Vertiv", "sector": "Cooling/Power", "operating_margin": 0.15, "growth_forecast": 1.40},
+    {"company_name": "Arista Networks", "sector": "Networking", "operating_margin": 0.35, "growth_forecast": 1.25},
+    {"company_name": "Schneider Electric", "sector": "Power", "operating_margin": 0.18, "growth_forecast": 1.15},
+    {"company_name": "NVIDIA", "sector": "Compute/AI Hardware", "operating_margin": 0.60, "growth_forecast": 1.80}
+]
