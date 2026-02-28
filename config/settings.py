@@ -1,10 +1,18 @@
 import os
+from dotenv import load_dotenv
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# Set your API Key
-os.environ["GOOGLE_API_KEY"] = "ABCD"
+# Load environment variables from .env file
+load_dotenv()
 
+# Set your API Key
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+if not GOOGLE_API_KEY:
+    raise ValueError("GOOGLE_API_KEY not found in environment variables. Please check your .env file.")
+
+os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
 
 # Prompt for moat analysis
 MOAT_PROMPT = ChatPromptTemplate.from_template("""

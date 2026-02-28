@@ -1,0 +1,5 @@
+[
+    {"company_name": "NVIDIA", "sector": "Compute/AI Hardware", "operating_margin": 0.60, "growth_forecast": 1.80, "market_cap": 2000000, "description": "Leading GPU manufacturer with CUDA ecosystem dominance"},
+    {"company_name": "TSMC", "sector": "Semiconductor Manufacturing", "operating_margin": 0.42, "growth_forecast": 1.35, "market_cap": 500000, "description": "World's largest contract chip manufacturer"},
+    {"company_name": "Broadcom", "sector": "Networking/Chips", "operating_margin": 0.55, "growth_forecast": 1.30, "market_cap": 650000, "description": "Diversified semiconductor and infrastructure software"}
+]

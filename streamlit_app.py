@@ -1,4 +1,3 @@
-# streamlit_app.py
 import streamlit as st
 import json
 import pandas as pd
@@ -7,6 +6,23 @@ import plotly.graph_objects as go
 from utils.workflow import create_workflow
 from state import AgentState
 import time
+from utils.data_loader import DataLoader
+from utils.analysis_engine import AnalysisEngine
+import os
+
+# Environment check
+def check_environment():
+    """Check if environment is properly configured."""
+    try:
+        from config.settings import GOOGLE_API_KEY
+        if not GOOGLE_API_KEY:
+            st.error("❌ GOOGLE_API_KEY not found. Please check your .env file.")
+            st.info("📝 Create a .env file in the project root with: GOOGLE_API_KEY=your_api_key_here")
+            return False
+        return True
+    except Exception as e:
+        st.error(f"❌ Configuration error: {str(e)}")
+        return False
 
 # Page configuration
 st.set_page_config(
@@ -59,44 +75,69 @@ def load_companies_data():
 @st.cache_resource
 def get_workflow():
     """Create and cache the workflow."""
-    return create_workflow()
+    try:
+        return create_workflow()
+    except Exception as e:
+        st.error(f"Error creating workflow: {str(e)}")
+        raise e
 
 def analyze_company(company_data, workflow):
-    """Analyze a single company."""
+    """Analyze a single company with error handling."""
     try:
+        # Ensure all required fields are present
+        required_fields = ['company_name', 'sector', 'operating_margin', 'growth_forecast']
+        for field in required_fields:
+            if field not in company_data:
+                st.error(f"Missing required field: {field}")
+                return None
+        
         result = workflow.invoke(company_data)
         return result
     except Exception as e:
-        st.error(f"Error analyzing {company_data['company_name']}: {str(e)}")
+        st.error(f"Error analyzing {company_data.get('company_name', 'Unknown')}: {str(e)}")
         return None
 
 def main():
+    # Check environment first
+    if not check_environment():
+        st.stop()
+
     st.markdown('<h1 class="main-header">🏭 AI Factory Growth Ranker</h1>', unsafe_allow_html=True)
     
     # Sidebar
     st.sidebar.header("📊 Analysis Controls")
     
-    # Load workflow
+    # Load workflow with error handling
     try:
         workflow = get_workflow()
         st.sidebar.success("✅ LangGraph workflow loaded successfully!")
     except Exception as e:
         st.sidebar.error(f"❌ Error loading workflow: {str(e)}")
+        st.sidebar.info("Please check your environment configuration and try again.")
         st.stop()
     
     # Main tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["🔍 Analysis", "📈 Rankings", "➕ Add Company", "ℹ️ About"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+        "🔍 Analysis", 
+        "📈 Rankings", 
+        "🏆 Top 20", 
+        "➕ Add Company", 
+        "ℹ️ About"
+    ])
     
     with tab1:
         analysis_tab(workflow)
     
     with tab2:
         rankings_tab(workflow)
-    
+
     with tab3:
-        add_company_tab()
+        top20_analysis_tab()
     
     with tab4:
+        add_company_tab()
+    
+    with tab5:
         about_tab()
 
 def analysis_tab(workflow):
@@ -261,6 +302,113 @@ def rankings_tab(workflow):
                     title="Moat Score vs Margin Score"
                 )
                 st.plotly_chart(fig2, use_container_width=True)
+
+
+# Add new function for Top 20 analysis
+def top20_analysis_tab():
+    """Top 20 Analysis tab."""
+    st.header("🏆 Top 20 AI Factory Rankings")
+    
+    engine = AnalysisEngine()
+    data_loader = DataLoader()
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.subheader("📊 Analysis Configuration")
+        
+        # Analysis options
+        analysis_type = st.selectbox(
+            "Analysis Type",
+            ["Full Top 20 Analysis", "Sector-Specific Analysis", "Custom Selection"]
+        )
+        
+        include_metadata = st.checkbox("Include Company Metadata", value=True)
+        
+        if st.button("🚀 Run Top 20 Analysis", type="primary"):
+            companies = data_loader.get_top_companies(20)
+            
+            # Progress tracking
+            progress_bar = st.progress(0)
+            status_text = st.empty()
+            results_placeholder = st.empty()
+            
+            results = []
+            for i, company in enumerate(companies):
+                status_text.text(f"Analyzing {company['company_name']} ({i+1}/20)")
+                result = engine.analyze_single_company(company)
+                results.append(result)
+                progress_bar.progress((i + 1) / 20)
+                
+                # Show live updates
+                if results:
+                    current_rankings = engine.get_top_rankings(results, len(results))
+                    with results_placeholder.container():
+                        st.subheader("🔄 Live Rankings")
+                        for rank, res in enumerate(current_rankings[:5], 1):
+                            st.write(f"{rank}. {res['company_name']}: {res.get('final_score', 0):.2f}")
+            
+            status_text.text("✅ Analysis Complete!")
+            
+            # Final rankings
+            final_rankings = engine.get_top_rankings(results, 20)
+            
+            # Display Top 20
+            st.subheader("🏆 Final Top 20 AI Factory Companies")
+            
+            # Create comprehensive results table
+            rankings_df = pd.DataFrame([
+                {
+                    'Rank': i+1,
+                    'Company': result['company_name'],
+                    'Sector': result.get('sector', 'N/A'),
+                    'TAFGS Score': result.get('final_score', 0),
+                    'Moat Score': result.get('moat_score', 0),
+                    'Margin Score': result.get('margin_score', 0),
+                    'Growth Forecast': result.get('growth_forecast', 1.0),
+                    'Operating Margin': f"{result.get('operating_margin', 0):.1%}" if 'operating_margin' in result else 'N/A'
+                } for i, result in enumerate(final_rankings)
+            ])
+            
+            st.dataframe(rankings_df, use_container_width=True)
+            
+            # Sector analysis
+            sector_stats = engine.generate_sector_analysis(final_rankings)
+            
+            st.subheader("📊 Sector Analysis")
+            sector_df = pd.DataFrame([
+                {
+                    'Sector': sector,
+                    'Companies': stats['count'],
+                    'Avg Score': f"{stats['avg_score']:.2f}",
+                    'Top Score': f"{stats['top_score']:.2f}",
+                    'Best Company': max(final_rankings, key=lambda x: x.get('final_score', 0) if x.get('sector') == sector else 0)['company_name'] if any(r.get('sector') == sector for r in final_rankings) else 'N/A'
+                } for sector, stats in sector_stats.items()
+            ])
+            
+            st.dataframe(sector_df, use_container_width=True)
+            
+            # Export functionality
+            if st.button("📥 Export Results"):
+                output_file = data_loader.export_results(final_rankings)
+                st.success(f"Results exported to {output_file}")
+
+    with col2:
+        st.subheader("📈 Key Insights")
+        
+        # Show sector distribution
+        if 'final_rankings' in locals():
+            sector_counts = {}
+            for result in final_rankings:
+                sector = result.get('sector', 'Unknown')
+                sector_counts[sector] = sector_counts.get(sector, 0) + 1
+            
+            fig = px.pie(
+                values=list(sector_counts.values()),
+                names=list(sector_counts.keys()),
+                title="Sector Distribution in Top 20"
+            )
+            st.plotly_chart(fig, use_container_width=True)
 
 def add_company_tab():
     """Add company tab content."""

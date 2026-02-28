@@ -1,0 +1,22 @@
+[
+    {"company_name": "NVIDIA", "sector": "Compute/AI Hardware", "operating_margin": 0.60, "growth_forecast": 1.80},
+    {"company_name": "Arista Networks", "sector": "Networking", "operating_margin": 0.35, "growth_forecast": 1.25},
+    {"company_name": "Vertiv", "sector": "Cooling/Power", "operating_margin": 0.15, "growth_forecast": 1.40},
+    {"company_name": "Schneider Electric", "sector": "Power", "operating_margin": 0.18, "growth_forecast": 1.15},
+    {"company_name": "AMD", "sector": "Compute/AI Hardware", "operating_margin": 0.22, "growth_forecast": 1.45},
+    {"company_name": "Intel", "sector": "Compute/AI Hardware", "operating_margin": 0.19, "growth_forecast": 1.12},
+    {"company_name": "Broadcom", "sector": "Networking/Chips", "operating_margin": 0.61, "growth_forecast": 1.28},
+    {"company_name": "Marvell Technology", "sector": "Networking/Storage", "operating_margin": 0.48, "growth_forecast": 1.35},
+    {"company_name": "Micron Technology", "sector": "Memory/Storage", "operating_margin": 0.26, "growth_forecast": 1.38},
+    {"company_name": "Western Digital", "sector": "Storage", "operating_margin": 0.08, "growth_forecast": 1.22},
+    {"company_name": "NetApp", "sector": "Storage/Software", "operating_margin": 0.19, "growth_forecast": 1.18},
+    {"company_name": "Pure Storage", "sector": "Storage", "operating_margin": 0.16, "growth_forecast": 1.42},
+    {"company_name": "Juniper Networks", "sector": "Networking", "operating_margin": 0.13, "growth_forecast": 1.15},
+    {"company_name": "Cisco Systems", "sector": "Networking", "operating_margin": 0.27, "growth_forecast": 1.08},
+    {"company_name": "Dell Technologies", "sector": "Infrastructure", "operating_margin": 0.05, "growth_forecast": 1.14},
+    {"company_name": "HPE", "sector": "Infrastructure", "operating_margin": 0.06, "growth_forecast": 1.12},
+    {"company_name": "Super Micro Computer", "sector": "Infrastructure", "operating_margin": 0.08, "growth_forecast": 1.65},
+    {"company_name": "Equinix", "sector": "Data Centers", "operating_margin": 0.22, "growth_forecast": 1.18},
+    {"company_name": "Digital Realty Trust", "sector": "Data Centers", "operating_margin": 0.35, "growth_forecast": 1.12},
+    {"company_name": "Taiwan Semiconductor", "sector": "Semiconductor Manufacturing", "operating_margin": 0.42, "growth_forecast": 1.22}
+]
