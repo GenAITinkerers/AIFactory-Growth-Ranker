@@ -93,6 +93,25 @@ python main.py --mode top20 --limit 50 --export
 python main.py --mode cli --limit 10
 ```
 
+#### Docker:
+
+```
+#Build docker image
+docker build -t Ai-factory-growth-ranker:latest .
+
+# Run docker image in a container
+	docker run -d \
+        --name ai-factory-ranker \
+        -p 8501:8501 \
+        --env-file .env \
+        -v $(pwd)/data:/app/data:ro \
+        --restart unless-stopped \
+        Ai-factory-growth-ranker:latest
+
+# Steamlit app:
+Local URL: http://localhost:8501
+```
+
 #### 📊 Python API
 
 ```python
