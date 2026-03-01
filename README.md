@@ -12,6 +12,7 @@
 The AI Factory Growth Ranker is a comprehensive analytical platform that leverages Large Language Models (LLMs) and multi-agent workflows to evaluate companies across the AI infrastructure value chain. Our proprietary **TAFGS (Total AI Factory Growth Score)** methodology combines quantitative financial metrics with qualitative competitive analysis to deliver institutional-grade investment insights.
 
 ### 🏆 Key Achievements
+
 - ✅ **50+ Company Database**: Comprehensive coverage of AI Factory ecosystem
 - ✅ **LLM-Powered Analysis**: Advanced competitive moat evaluation using Google Gemini
 - ✅ **Multi-Agent Architecture**: Scalable LangGraph workflow system
@@ -26,14 +27,15 @@ TAFGS = (Moat Score × Margin Score) × Growth Forecast × Sector Weight
 
 ### 🔍 Component Analysis
 
-| Component | Range | Description | Weight |
-|-----------|-------|-------------|---------|
-| **🏰 Moat Score** | 0-5 | LLM-evaluated competitive defensibility | 40% |
-| **💰 Margin Score** | 1-5 | Operating margin strength categorization | 40% |
-| **📈 Growth Forecast** | 0.5-3.0x | AI-driven growth multiplier | 20% |
-| **⚖️ Sector Weight** | 0.9-1.5x | Industry importance modifier | Variable |
+| Component              | Range    | Description                              | Weight   |
+| ---------------------- | -------- | ---------------------------------------- | -------- |
+| **🏰 Moat Score**      | 0-5      | LLM-evaluated competitive defensibility  | 40%      |
+| **💰 Margin Score**    | 1-5      | Operating margin strength categorization | 40%      |
+| **📈 Growth Forecast** | 0.5-3.0x | AI-driven growth multiplier              | 20%      |
+| **⚖️ Sector Weight**   | 0.9-1.5x | Industry importance modifier             | Variable |
 
 ### 🏰 Moat Analysis Criteria
+
 1. **Architectural Lock-in** - Proprietary standards (e.g., CUDA ecosystem)
 2. **Ecosystem Dominance** - Design wins and reference architectures
 3. **Switching Costs** - Standard-setting influence and customer stickiness
@@ -42,6 +44,7 @@ TAFGS = (Moat Score × Margin Score) × Growth Forecast × Sector Weight
 ## 🚀 Quick Start Guide
 
 ### 📋 Prerequisites
+
 - Python 3.8+
 - Google AI API Key ([Get one here](https://aistudio.google.com))
 - 4GB+ RAM recommended
@@ -70,12 +73,15 @@ cp tests/.env.example .env
 ### 🎮 Usage Options
 
 #### 🖥️ Professional Web Interface
+
 ```bash
 streamlit run streamlit_app.py
 ```
+
 Access at: `http://localhost:8501`
 
 #### 💻 Command Line Interface
+
 ```bash
 # Analyze top 20 companies
 python main.py --limit 20
@@ -88,6 +94,7 @@ python main.py --mode cli --limit 10
 ```
 
 #### 📊 Python API
+
 ```python
 from utils.analysis_engine import AnalysisEngine
 from utils.data_loader import DataLoader
@@ -127,14 +134,16 @@ graph TD
 ## 📈 Features & Capabilities
 
 ### 🎯 Core Features
+
 - **🔍 Individual Company Analysis**: Deep-dive analysis with LLM insights
-- **📊 Batch Processing**: Analyze multiple companies simultaneously  
+- **📊 Batch Processing**: Analyze multiple companies simultaneously
 - **🏆 Top 50 Rankings**: Comprehensive sector-wide analysis
 - **📈 Advanced Visualizations**: Interactive charts and dashboards
 - **📄 Executive Reporting**: Professional-grade analysis reports
 - **🔄 Real-time Updates**: Dynamic scoring and ranking
 
 ### 💼 Professional Tools
+
 - **📊 Sector Analysis**: Industry-specific insights and comparisons
 - **🎯 Geographic Distribution**: Regional market analysis
 - **📈 Market Intelligence**: Growth trend identification
@@ -142,6 +151,7 @@ graph TD
 - **📋 Export Capabilities**: CSV, JSON, and PDF reporting
 
 ### 🔧 Technical Features
+
 - **🤖 LLM Integration**: Google Gemini-powered moat analysis
 - **⚡ Scalable Architecture**: LangGraph multi-agent system
 - **🔒 Secure Configuration**: Environment-based API key management
@@ -179,12 +189,14 @@ AIFactory-Growth-Ranker/
 ## 🎨 Streamlit Interface Preview
 
 ### 🏠 Main Dashboard
+
 - **Executive Summary**: Key metrics and top performers
 - **Interactive Rankings**: Sortable company tables
 - **Advanced Visualizations**: 3D scatter plots and sector analysis
 - **Export Tools**: Professional report generation
 
 ### 📊 Analysis Tabs
+
 1. **🔍 Individual Analysis**: Single company deep-dive
 2. **📈 Batch Rankings**: Multi-company comparison
 3. **🏆 Top 50 Analysis**: Comprehensive market overview
@@ -194,6 +206,7 @@ AIFactory-Growth-Ranker/
 ## 🔧 Advanced Configuration
 
 ### 🎯 Sector Weights
+
 ```json
 {
   "Compute/AI Hardware": 1.5,
@@ -206,6 +219,7 @@ AIFactory-Growth-Ranker/
 ```
 
 ### 🤖 LLM Settings
+
 ```python
 # Gemini Configuration
 model = "gemini-2.5-flash"
@@ -216,23 +230,26 @@ max_tokens = 1000
 ## 📊 Sample Results
 
 ### 🏆 Top 10 AI Factory Companies (Sample)
-| Rank | Company | Sector | TAFGS Score | Moat | Margin |
-|------|---------|--------|-------------|------|---------|
-| 1 | NVIDIA | Compute/AI Hardware | 45.00 | 5/5 | 60% |
-| 2 | TSMC | Semiconductor Mfg | 28.35 | 4/5 | 42% |
-| 3 | Broadcom | Networking/Chips | 27.17 | 5/5 | 55% |
-| 4 | Arista Networks | Networking | 20.00 | 4/5 | 35% |
-| 5 | AMD | Compute/AI Hardware | 16.24 | 3/5 | 22% |
+
+| Rank | Company         | Sector              | TAFGS Score | Moat | Margin |
+| ---- | --------------- | ------------------- | ----------- | ---- | ------ |
+| 1    | NVIDIA          | Compute/AI Hardware | 45.00       | 5/5  | 60%    |
+| 2    | TSMC            | Semiconductor Mfg   | 28.35       | 4/5  | 42%    |
+| 3    | Broadcom        | Networking/Chips    | 27.17       | 5/5  | 55%    |
+| 4    | Arista Networks | Networking          | 20.00       | 4/5  | 35%    |
+| 5    | AMD             | Compute/AI Hardware | 16.24       | 3/5  | 22%    |
 
 ## 🔬 Research & Development
 
 ### 📚 Academic Foundation
+
 - Based on Porter's competitive strategy framework
-- Incorporates modern AI/ML company valuation methodologies  
+- Incorporates modern AI/ML company valuation methodologies
 - Leverages quantitative finance principles
 - Validated against real-world investment outcomes
 
 ### 🎯 Future Enhancements
+
 - [ ] Real-time financial data integration
 - [ ] Sentiment analysis from earnings calls
 - [ ] ESG scoring integration
@@ -258,6 +275,7 @@ isort src/
 ```
 
 ### 📋 Contribution Guidelines
+
 - Follow PEP 8 style guidelines
 - Add tests for new features
 - Update documentation
@@ -287,184 +305,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <strong>🏭 Built for the AI Factory Revolution | Professional Investment Research Platform</strong><br>
 <em>Powering the future of AI infrastructure investment decisions</em>
 </div>
-
-# AI Factory Growth Ranker
-
-## Project Objective
-
-Analyze and rank companies in the AI Factory Capital Stack using the TAFGS (Total AI Factory Growth Score) formula.
-
-## TAFGS Formula
-
-```
-TAFGS = (Moat Score × Margin Score) × Growth Forecast
-```
-
-Where:
-
-- **Moat Score** (0-5): Competitive defensibility analysis using LLM
-- **Margin Score** (1-5): Operating margin strength
-- **Growth Forecast**: Future growth multiplier
-
-## Installation
-
-1. Clone the repository:
-
-```bash
-git clone <repository-url>
-cd AIFactory-Growth-Ranker
-```
-
-2. Create and activate virtual environment:
-
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-3. Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-
-4. **Set up environment variables:**
-
-   Copy the example environment file and add your API key:
-
-   ```bash
-   cp tests/.env.example .env
-   ```
-
-   Edit `.env` and replace `your_google_api_key_here` with your actual Google API key:
-
-   ```
-   GOOGLE_API_KEY=your_actual_api_key_here
-   ```
-
-
-5. **Get Google API Key:**
-   - Go to [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Create a new API key
-   - Copy the key and paste it in your `.env` file
-
-## Project Structure
-
-```
-AIFactory-Growth-Ranker/
-├── agents/           # Individual agent modules
-├── config/           # Configuration and settings
-├── data/            # Company data files
-├── notebooks/       # Jupyter notebooks
-├── utils/           # Utility functions
-├── main.py          # Entry point
-├── state.py         # Shared state definition
-└── requirements.txt # Dependencies
-```
-
-# AIFactory-Growth-Ranker
-
-AI factory
-
-AIFactory-Growth-Ranker/
-│
-├── agents/                    # Individual agent modules
-│   ├── moat_agent.py
-│   ├── margin_agent.py
-│   ├── growth_agent.py
-│   └── __init__.py
-│
-├── data/                      # Company data (CSVs, JSONs, etc.)
-│   ├── companies.csv
-│   └── sample_input.json
-│
-├── notebooks/                 # Jupyter notebooks for prototyping and visualization
-│   ├── deep_research.ipynb
-│   └── deep_research_with_llm.ipynb
-│
-├── state.py                   # AgentState TypedDict and shared types
-├── main.py                    # Entry point: runs the full Top 20 ranking pipeline
-├── requirements.txt           # All dependencies (langgraph, langchain, etc.)
-├── README.md                  # Project Objective, TAFGS Formula, usage instructions
-└── .gitignore                 # Ignore venvs, __pycache__, .ipynb_checkpoints, etc.
-
-**Key Points:**
-
-* Each agent (moat, margin, growth) is a separate module in `agents/`.
-* All data files are in `data/`.
-* Notebooks are in `notebooks/` for experimentation and visualization.
-* `main.py` is the CLI/entry point for running the ranking end-to-end.
-* `state.py` holds the shared state definition (`AgentState`).
-* `requirements.txt` for reproducible environments.
-
-### Command Line Interface
-
-**Run the CLI version:**
-
-```bash
-python main.py
-```
-
-**Run Commands for Complete Top 20 Analysis**
-
-```
-python main.py --mode top20 --limit 20 --export
-```
-
-### Web Interface (Streamlit)
-
-Launch the interactive web app:
-
-```bash
-streamlit run streamlit_app.py
-```
-
-The app will be available at `http://localhost:8501`
-
-## Features
-
-### Web App Features:
-
-- 🔍 **Interactive Analysis**: Select and analyze individual companies
-- 📈 **Batch Rankings**: Analyze all companies and view rankings
-- ➕ **Add Companies**: Add new companies for analysis
-- 📊 **Visualizations**: Interactive charts and graphs
-- 📱 **Responsive Design**: Works on desktop and mobile
-
-### Analysis Capabilities:
-
-- Real-time LLM-powered moat analysis
-- TAFGS score calculation
-- Competitive positioning insights
-- Growth forecasting
-
-## Key Features of the Streamlit App:
-
-1. **🔍 Analysis Tab** :
-
-* Select companies for individual analysis
-* View detailed results with metrics
-* Interactive formula explanation
-
-1. **📈 Rankings Tab** :
-
-* Batch analyze all companies
-* Visual rankings with charts
-* Comparative analysis
-
-1. **➕ Add Company Tab** :
-
-* Add new companies dynamically
-* Immediate analysis capability
-
-1. **ℹ️ About Tab** :
-
-* Project documentation
-* Technical implementation details
-
-1. **📊 Visualizations** :
-
-* Bar charts for scores
-* Scatter plots for comparisons
-* Interactive Plotly charts
