@@ -75,3 +75,5 @@ docker-compose*.yaml
 
 # Environment files
 .env.example
+
+notebooks/
