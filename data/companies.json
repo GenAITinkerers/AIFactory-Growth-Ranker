@@ -1,4 +1,14 @@
 [
-    {"company_name": "Vertiv", "sector": "Cooling/Power", "operating_margin": 0.15, "growth_forecast": 1.40},
-    {"company_name": "Arista Networks", "sector": "Networking", "operating_margin": 0.35, "growth_forecast": 1.25}
+  {
+    "company_name": "Vertiv",
+    "sector": "Cooling/Power",
+    "operating_margin": 0.15,
+    "growth_forecast": 1.4
+  },
+  {
+    "company_name": "Arista Networks",
+    "sector": "Networking",
+    "operating_margin": 0.35,
+    "growth_forecast": 1.25
+  }
 ]
