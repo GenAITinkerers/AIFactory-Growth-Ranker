@@ -53,7 +53,7 @@ TAFGS = (Moat Score × Margin Score) × Growth Forecast × Sector Weight
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/AIFactory-Growth-Ranker.git
+git clone https://github.com/GenAITinkerers/AIFactory-Growth-Ranker.git
 cd AIFactory-Growth-Ranker
 
 # Create virtual environment
@@ -155,7 +155,6 @@ graph TD
 - **🤖 LLM Integration**: Google Gemini-powered moat analysis
 - **⚡ Scalable Architecture**: LangGraph multi-agent system
 - **🔒 Secure Configuration**: Environment-based API key management
-- **📱 Responsive Design**: Mobile-friendly interface
 - **🚀 Performance Optimized**: Caching and async processing
 
 ## 📁 Project Structure
@@ -262,7 +261,7 @@ We welcome contributions from the investment research and AI community!
 
 ```bash
 # Development setup
-git clone https://github.com/your-username/AIFactory-Growth-Ranker.git
+git clone https://github.com/GenAITinkerers/AIFactory-Growth-Ranker.git
 cd AIFactory-Growth-Ranker
 pip install -e .
 
@@ -280,13 +279,6 @@ isort src/
 - Add tests for new features
 - Update documentation
 - Ensure compatibility with Python 3.8+
-
-## 📞 Support & Contact
-
-- **📧 Email**: support@aifactory-ranker.com
-- **🐛 Issues**: [GitHub Issues](https://github.com/your-repo/issues)
-- **💬 Discussions**: [GitHub Discussions](https://github.com/your-repo/discussions)
-- **📖 Documentation**: [Full Documentation](https://docs.aifactory-ranker.com)
 
 ## 📄 License
 
