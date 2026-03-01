@@ -45,8 +45,8 @@ TAFGS = (Moat Score × Margin Score) × Growth Forecast × Sector Weight
 
 ### 📋 Prerequisites
 
-- Python 3.8+
-- Google AI API Key ([Get one here](https://aistudio.google.com))
+- Python 3.12+
+- Google AI API Key
 - 4GB+ RAM recommended
 
 ### ⚡ Installation
@@ -276,7 +276,7 @@ max_tokens = 1000
 
 ## 🤝 Contributing
 
-We welcome contributions from the investment research and AI community!
+We welcome contributions from the research and AI community!
 
 ```bash
 # Development setup
@@ -297,7 +297,7 @@ isort src/
 - Follow PEP 8 style guidelines
 - Add tests for new features
 - Update documentation
-- Ensure compatibility with Python 3.8+
+- Ensure compatibility with Python 3.12+
 
 ## 📄 License
 
